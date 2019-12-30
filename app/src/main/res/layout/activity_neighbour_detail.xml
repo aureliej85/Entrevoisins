@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detailNeighbour"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCEBE7E7">
+
+    <ImageView
+        android:id="@+id/avatarPic"
+        android:layout_width="416dp"
+        android:layout_height="201dp"
+        android:layout_marginBottom="678dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/bigUsernameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="128dp"
+        android:text="Caroline"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/favButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="324dp"
+        android:layout_marginTop="120dp"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:onClick="editFavorite"
+        app:backgroundTint="#FCD6D2D2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:srcCompat="?android:attr/colorPrimaryDark" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="382dp"
+        android:layout_height="191dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatarPic">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/roomPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usernameText"
+                app:srcCompat="@drawable/ic_room_black_24dp" />
+
+            <ImageView
+                android:id="@+id/telPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roomPic"
+                app:srcCompat="@drawable/ic_call_black_24dp" />
+
+            <ImageView
+                android:id="@+id/linkPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/telPic"
+                app:srcCompat="@drawable/ic_language_black_24dp" />
+
+            <TextView
+                android:id="@+id/usernameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/username"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/adressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Fausse adresse"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/roomPic"
+                app:layout_constraintTop_toBottomOf="@+id/usernameText" />
+
+            <TextView
+                android:id="@+id/telText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="TextView"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/telPic"
+                app:layout_constraintTop_toBottomOf="@+id/adressText" />
+
+            <TextView
+                android:id="@+id/urlText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="TextView"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/linkPic"
+                app:layout_constraintTop_toBottomOf="@+id/telText" />
+
+            <View
+                android:id="@+id/horizLine1"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="46dp"
+                android:background="#FCDBD7ED"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card2"
+        android:layout_width="380dp"
+        android:layout_height="151dp"
+        android:layout_marginTop="19dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card1">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/apropos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="A propos de moi"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/descText"
+                android:layout_width="352dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/apropos" />
+
+            <View
+                android:id="@+id/horizLine2"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="46dp"
+                android:background="#FCDBD7D7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0003A9F4"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="#FFFFFF" />
+
+</android.support.constraint.ConstraintLayout>
