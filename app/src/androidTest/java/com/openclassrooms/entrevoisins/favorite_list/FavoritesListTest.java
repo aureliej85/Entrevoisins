@@ -26,7 +26,9 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.AllOf.allOf;
 
 import android.support.v7.widget.RecyclerView;
@@ -51,26 +53,18 @@ public class FavoritesListTest {
 
     @Test
     public void FavoriteTabShouldContainsOnlyFavoritesNeighbours() throws InterruptedException {
-        //click on One Of Neighbour, here on position 5
-        onView(allOf(withId(R.id.list_neighbours), isDisplayed())).perform(actionOnItemAtPosition(1, click()));
+        onView(allOf(withId(R.id.list_neighbours), isDisplayed())).perform(actionOnItemAtPosition(0, click()));
 
+        onView(withId(R.id.favButton)).perform(click()).perform(pressBack());
 
-        // click on favorite Button, the FloatingButton
-        onView(withId(R.id.favButton)).perform(click());
-
-
-        // goback
-        pressBack();
-
-        onView(withId(R.id.main_content)).perform(swipeLeft());
+        onView(allOf(withId(R.id.list_neighbours),isDisplayed())).perform(swipeLeft());
         Thread.sleep(300);
 
-        onView(withId(R.id.main_content)).check(matches(isDisplayed()));
         onView(withId(R.id.list_favorites)).perform(RecyclerViewActions.scrollToPosition(0)).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.list_favorites))).perform(actionOnItemAtPosition(0, click()));
-        onView(withId(R.id.usernameText)).check(matches(withText("Jack")));
-
+        onView(allOf(withId(R.id.list_favorites))).perform(actionOnItemAtPosition(3, click()));
+        onView(withId(R.id.usernameText)).check(matches(withText("Caroline")));
     }
+
 
 }
 

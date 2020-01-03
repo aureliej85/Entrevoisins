@@ -1,30 +1,23 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.os.Bundle;
-import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
+import android.support.v4.view.ViewPager;;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import com.openclassrooms.entrevoisins.R;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Optional;
+
 
 public class ListNeighbourActivity extends AppCompatActivity {
 
-    // UI Components
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.container)
     ViewPager mViewPager;
-
-
 
     ListNeighbourPagerAdapter mPagerAdapter;
 
@@ -37,14 +30,7 @@ public class ListNeighbourActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mPagerAdapter);
-        //mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-        //mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        // 2 - Glue TabLayout and ViewPager together
         mTabLayout.setupWithViewPager(mViewPager);
-        // 3 - Design purpose. Tabs have the same width
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-
-
     }
 }

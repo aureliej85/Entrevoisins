@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Entrevoisins</string>
-    <string name="tab_neighbour_title">My neighbours</string>
-    <string name="tab_favorites_title">Favorites</string>
+    <string name="tab_neighbour_title">Mes voisins</string>
+    <string name="tab_favorites_title">Favoris</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="username">Caroline</string>
+    <string name="deleteMessage">Voulez-vous vraiment supprimer </string>
+    <string name="de_vos_favoris">de vos favoris ?</string>
+    <string name="de_vos_voisins">de vos voisins ?</string>
+    <string name="confirm_neighbour_delete">a été supprimé de la liste de vos voisins.</string>
+    <string name="confirm_favorite_delete">n\'est plus dans vos favoris.</string>
+    <string name="déjà_dans_favoris">est déjà dans vos favoris.</string>
+    <string name="est_maintenant_dans_favoris">est maintenant dans vos favoris.</string>
+    <string name="username">username</string>
 </resources>

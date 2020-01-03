@@ -49,6 +49,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Neighbour neighbour = mNeighbours.get(position);
+
         holder.mNeighbourName.setText(neighbour.getName());
         Glide.with(holder.mNeighbourAvatar.getContext())
                 .load(neighbour.getAvatarUrl())
@@ -60,15 +61,14 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Voulez-vous vraiment supprimer " + neighbour.getName() + " de vos voisins ?");
-                builder.setTitle("Etes vous sûre ?");
+                builder.setMessage(context.getString(R.string.deleteMessage) +" "+ neighbour.getName() +" "+  context.getString(R.string.de_vos_voisins));
                 builder.setCancelable(false);
                 builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
                         dialog.dismiss();
-                        Toast.makeText(context, neighbour.getName() + " a été supprimé de la liste de vos voisins.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, neighbour.getName() + " "+ context.getString(R.string.confirm_neighbour_delete), Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -90,13 +90,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             public void onClick(View view) {
 
                 Intent intent = new Intent(view.getContext(), NeighbourDetailActivity.class);
-                intent.putExtra("username", neighbour.getName());
-                intent.putExtra("avatar", neighbour.getAvatarUrl());
-                intent.putExtra("ID", neighbour.getId());
-                intent.putExtra("adresse", neighbour.getAdress());
-                intent.putExtra("tel", neighbour.getTel());
-                intent.putExtra("link", neighbour.getUrl());
-                intent.putExtra("description", neighbour.getDescription());
+
+                intent.putExtra("neighbour", neighbour);
 
                 view.getContext().startActivity(intent);
             }
