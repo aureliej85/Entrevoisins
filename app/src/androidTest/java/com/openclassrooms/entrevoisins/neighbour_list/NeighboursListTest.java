@@ -17,6 +17,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
@@ -42,8 +43,8 @@ public class NeighboursListTest {
     private static int ITEMS_COUNT = 12;
 
     private ListNeighbourActivity mActivity;
-
     private NeighbourApiService mApiService;
+    private int mPosition = 7;
 
     @Rule
     public ActivityTestRule<ListNeighbourActivity> mActivityRule =
@@ -70,7 +71,7 @@ public class NeighboursListTest {
     /**
      * When we delete an item, the item is no more shown
      */
-    @Test
+    @Test // KO
     public void myNeighboursList_deleteAction_shouldRemoveItem() throws InterruptedException {
         // Given : We remove the element at position 2
         onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
@@ -82,11 +83,14 @@ public class NeighboursListTest {
     }
 
 
-    /** Lorsqu’on clique sur un élément de la liste, l’écran de détails est bien lancé +
-     TextView indiquant le nom de l’utilisateur en question est bien rempli **/
+
     @Test
-    public void myNeighboursList_detailNeighbour(){
-        onView(ViewMatchers.withId(R.id.list_neighbours)).perform(actionOnItemAtPosition(10, click()));
-        onView(ViewMatchers.withId(R.id.usernameText)).check(matches(withText(mApiService.getNeighbours().get(10).getName())));
+    public void fromNeighboursListToDetailNeighbour(){
+        onView(ViewMatchers.withId(R.id.list_neighbours)).perform(actionOnItemAtPosition(mPosition, click()));
+        onView(ViewMatchers.withId(R.id.usernameText)).check(matches(withText(mApiService.getNeighbours().get(mPosition).getName())));
+        onView(ViewMatchers.withId(R.id.adressText)).check(matches(withText(mApiService.getNeighbours().get(mPosition).getAdress())));
+        onView(ViewMatchers.withId(R.id.telText)).check(matches(withText(mApiService.getNeighbours().get(mPosition).getTel())));
+        onView(ViewMatchers.withId(R.id.urlText)).check(matches(withText(mApiService.getNeighbours().get(mPosition).getUrl())));
+        onView(ViewMatchers.withId(R.id.descText)).check(matches(withText(mApiService.getNeighbours().get(mPosition).getDescription())));
     }
 }

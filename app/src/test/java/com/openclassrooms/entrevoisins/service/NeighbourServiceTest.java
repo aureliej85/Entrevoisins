@@ -22,6 +22,7 @@ public class NeighbourServiceTest {
 
     private NeighbourApiService service;
 
+
     @Before
     public void setup() {
         service = DI.getNewInstanceApiService();
@@ -35,10 +36,28 @@ public class NeighbourServiceTest {
     }
 
     @Test
-    public void deleteNeighbourWithSuccess() {
+    public void deleteNeighbourWithSuccess() throws InterruptedException {
         Neighbour neighbourToDelete = service.getNeighbours().get(0);
+        Thread.sleep(300);
         service.deleteNeighbour(neighbourToDelete);
         assertFalse(service.getNeighbours().contains(neighbourToDelete));
     }
+
+    @Test
+    public void getFavoriteWithSuccess() {
+        List<Neighbour> favorite = service.getFavorites();
+        List<Neighbour> expectedFavorites = DummyNeighbourGenerator.FAVORITES;
+        assertThat(favorite, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedFavorites.toArray()));
+    }
+
+    @Test
+    public void deleteFavoriteWithSuccess() throws InterruptedException {
+        Neighbour favoriteToDelete = service.getFavorites().get(0);
+        Thread.sleep(300);
+        service.deleteFavorite(favoriteToDelete);
+        assertFalse(service.getFavorites().contains(favoriteToDelete));
+    }
+
+
 
 }

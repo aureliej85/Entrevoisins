@@ -23,6 +23,7 @@ import com.openclassrooms.entrevoisins.ui.detailsNeighbour.NeighbourDetailActivi
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
+import java.util.logging.Handler;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,6 +62,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+
                 builder.setMessage(context.getString(R.string.deleteMessage) +" "+ neighbour.getName() +" "+  context.getString(R.string.de_vos_voisins));
                 builder.setCancelable(false);
                 builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
@@ -75,13 +78,12 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
+
                     }
                 });
+
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-
-
-
             }
         });
 
