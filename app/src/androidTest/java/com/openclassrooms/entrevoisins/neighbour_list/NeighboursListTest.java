@@ -55,26 +55,9 @@ public class NeighboursListTest {
      */
     @Test
     public void myNeighboursList_shouldNotBeEmpty() {
-        // First scroll to the position that needs to be matched and click on it.
         onView(ViewMatchers.withId(R.id.list_neighbours))
                 .check(matches(hasMinimumChildCount(1)));
     }
-
-    /**
-     * When we delete an item, the item is no more shown
-     */
-    @Test
-    public void myNeighboursList_deleteAction_shouldRemoveItem() {
-        // Given : We remove the element at position 2
-        onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
-        // When perform a click on a delete icon
-        onView(ViewMatchers.withId(R.id.list_neighbours))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
-        onView(withText("OUI")).perform(click());
-        onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
-    }
-
-
 
     @Test
     public void fromNeighboursListToDetailNeighbour(){
@@ -85,4 +68,20 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.urlText)).check(matches(withText(mApiService.getNeighbours().get(mPosition).getUrl())));
         onView(ViewMatchers.withId(R.id.descText)).check(matches(withText(mApiService.getNeighbours().get(mPosition).getDescription())));
     }
+
+    /**
+     * When we delete an item, the item is no more shown
+     */
+    @Test
+    public void myNeighboursList_deleteAction_shouldRemoveItem() {
+        onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
+        onView(ViewMatchers.withId(R.id.list_neighbours))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
+        onView(withText("OUI")).perform(click());
+        onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
+    }
+
+
+
+
 }
