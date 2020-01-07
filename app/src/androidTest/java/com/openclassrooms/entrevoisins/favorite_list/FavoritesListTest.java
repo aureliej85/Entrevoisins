@@ -15,25 +15,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.pressBack;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withChild;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.AllOf.allOf;
 
 
 @RunWith(AndroidJUnit4.class)
 public class FavoritesListTest {
 
-    private ListNeighbourActivity mActivity;
+
     private NeighbourApiService mApiService;
 
     @Rule
@@ -46,31 +41,22 @@ public class FavoritesListTest {
     }
 
     @Test
-    public void FavoriteTabShouldContainsOnlyFavoritesNeighbours() throws InterruptedException {
-        onView(allOf(withId(R.id.list_neighbours), isDisplayed())).perform(actionOnItemAtPosition(0, click()));
-
-        onView(withId(R.id.favButton)).perform(click()).perform(pressBack());
-
+    public void FavoriteTabShouldContainsOnlyFavoritesNeighbours(){
         onView(allOf(withId(R.id.list_neighbours),isDisplayed())).perform(swipeLeft());
-        Thread.sleep(300);
         onView(withId(R.id.list_favorites)).perform(scrollToPosition(0)).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.list_favorites))).perform(actionOnItemAtPosition(3, click()));
-        onView(withId(R.id.usernameText)).check(matches(withText("Caroline")));
-
-        //onView(withId(R.id.detailNeighbour)).check(matches(isDisplayed()));
-        //onView(withId(R.id.favButton)).check(matches(withTagValue(equalTo(R.drawable.ic_star_yellow))));
+        onView(withText("Emma")).check(matches(withText(mApiService.getFavorites().get(0).getName())));
     }
 
+
+
     @Test
-    public void favoriteList_deleteAction_shouldRemoveItem() throws InterruptedException {
+    public void favoriteList_deleteAction_shouldRemoveItem(){
         onView(allOf(withId(R.id.list_neighbours),isDisplayed())).perform(swipeLeft());
-        Thread.sleep(300);
 
         onView(ViewMatchers.withId(R.id.list_favorites)).check(withItemCount(3));
         onView(ViewMatchers.withId(R.id.list_favorites))
                     .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteFavoriteViewAction()));
 
-        Thread.sleep(300);
         onView(withText("OUI")).perform(click());
         onView(ViewMatchers.withId(R.id.list_favorites)).check(withItemCount(2));
     }

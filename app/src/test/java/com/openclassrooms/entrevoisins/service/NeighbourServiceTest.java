@@ -36,9 +36,8 @@ public class NeighbourServiceTest {
     }
 
     @Test
-    public void deleteNeighbourWithSuccess() throws InterruptedException {
+    public void deleteNeighbourWithSuccess(){
         Neighbour neighbourToDelete = service.getNeighbours().get(0);
-        Thread.sleep(300);
         service.deleteNeighbour(neighbourToDelete);
         assertFalse(service.getNeighbours().contains(neighbourToDelete));
     }
@@ -51,9 +50,8 @@ public class NeighbourServiceTest {
     }
 
     @Test
-    public void deleteFavoriteWithSuccess() throws InterruptedException {
+    public void deleteFavoriteWithSuccess() {
         Neighbour favoriteToDelete = service.getFavorites().get(0);
-        Thread.sleep(300);
         service.deleteFavorite(favoriteToDelete);
         assertFalse(service.getFavorites().contains(favoriteToDelete));
     }
