@@ -29,14 +29,9 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static android.support.test.espresso.action.ViewActions.click;
 
 
-/**
- * Test class for list of neighbours
- */
 @RunWith(AndroidJUnit4.class)
 public class NeighboursListTest {
 
-
-    private ListNeighbourActivity mActivity;
     private NeighbourApiService mApiService;
 
     @Rule
@@ -45,15 +40,10 @@ public class NeighboursListTest {
 
     @Before
     public void setUp() {
-        mActivity = mActivityRule.getActivity();
-        assertThat(mActivity, notNullValue());
         mApiService = DI.getNewInstanceApiService();
     }
 
 
-    /**
-     * We ensure that our recyclerview is displaying at least on item
-     */
     @Test
     public void myNeighboursList_shouldNotBeEmpty() {
         onView(ViewMatchers.withId(R.id.list_neighbours))
@@ -61,10 +51,6 @@ public class NeighboursListTest {
     }
 
 
-
-    /**
-     * When we delete an item, the item is no more shown
-     */
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem() {
         onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(12));

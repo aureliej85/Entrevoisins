@@ -5,6 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
+import com.openclassrooms.entrevoisins.ui.detailsNeighbour.NeighbourDetailActivity;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,7 +21,6 @@ import static org.hamcrest.core.IsNull.notNullValue;
 
 public class NeighbourDetailTest {
 
-    private ListNeighbourActivity mActivity;
     private NeighbourApiService mApiService;
     private int mPosition = 2;
 
@@ -30,8 +30,6 @@ public class NeighbourDetailTest {
 
     @Before
     public void setUp() {
-        mActivity = mActivityRule.getActivity();
-        assertThat(mActivity, notNullValue());
         mApiService = DI.getNewInstanceApiService();
     }
 

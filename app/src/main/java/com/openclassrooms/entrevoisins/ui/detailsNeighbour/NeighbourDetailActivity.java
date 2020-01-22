@@ -23,25 +23,16 @@ import butterknife.ButterKnife;
 
 public class NeighbourDetailActivity extends AppCompatActivity {
 
-    @BindView(R.id.usernameText)
-    public TextView mUsername;
-    @BindView(R.id.avatarPic)
-    public ImageView mAvatar;
-    @BindView(R.id.favButton)
-    public ImageView mStar;
-    @BindView(R.id.adressText)
-    public TextView mAdresse;
-    @BindView(R.id.telText)
-    public TextView mTel;
-    @BindView(R.id.urlText)
-    public TextView mLink;
-    @BindView(R.id.descText)
-    public TextView mDescr;
-    @BindView(R.id.bigUsernameText)
-    public TextView mBigUsername;
+    @BindView(R.id.usernameText) public TextView mUsername;
+    @BindView(R.id.avatarPic) public ImageView mAvatar;
+    @BindView(R.id.favButton) public ImageView mStar;
+    @BindView(R.id.adressText) public TextView mAdresse;
+    @BindView(R.id.telText) public TextView mTel;
+    @BindView(R.id.urlText) public TextView mLink;
+    @BindView(R.id.descText) public TextView mDescr;
+    @BindView(R.id.bigUsernameText) public TextView mBigUsername;
 
     private NeighbourApiService mApiService;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

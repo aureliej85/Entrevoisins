@@ -36,7 +36,6 @@ public class FavoritesListTest {
 
     @Before
     public void setUp() {
-        mActivityRule.getActivity().getSupportFragmentManager().beginTransaction();
         mApiService = DI.getNewInstanceApiService();
     }
 

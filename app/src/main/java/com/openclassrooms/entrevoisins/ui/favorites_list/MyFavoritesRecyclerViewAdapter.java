@@ -29,7 +29,6 @@ public class MyFavoritesRecyclerViewAdapter extends RecyclerView.Adapter<MyFavor
     private final List<Neighbour> mFavorites;
     private NeighbourApiService mNeighbourApiService;
     private Context context;
-    private static final String TAG = "Favorite neighbour";
 
     public MyFavoritesRecyclerViewAdapter(List<Neighbour> items ) {
         mFavorites = items;
@@ -68,7 +67,6 @@ public class MyFavoritesRecyclerViewAdapter extends RecyclerView.Adapter<MyFavor
                         notifyDataSetChanged();
                         dialog.dismiss();
                         Toast.makeText(context, favorites.getName() + " " + context.getString(R.string.confirm_favorite_delete), Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "was deleted ");
                     }
                 });
                 builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -99,12 +97,9 @@ public class MyFavoritesRecyclerViewAdapter extends RecyclerView.Adapter<MyFavor
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.item_list_avatar2)
-        public ImageView mFavoriteAvatar;
-        @BindView(R.id.item_list_name2)
-        public TextView mFavoriteName;
-        @BindView(R.id.item_list_delete_button2)
-        public ImageButton mDeleteButton;
+        @BindView(R.id.item_list_avatar2) public ImageView mFavoriteAvatar;
+        @BindView(R.id.item_list_name2) public TextView mFavoriteName;
+        @BindView(R.id.item_list_delete_button2) public ImageButton mDeleteButton;
 
         public ViewHolder(View view) {
             super(view);
