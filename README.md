@@ -1,4 +1,4 @@
-P3 - Entrevoisins (DAA) <br><br>
+<center><b>P3 - Entrevoisins (DAA)</b> </center><br><br>
 
 English: <br>
 1/ Clone or download the project<br>
